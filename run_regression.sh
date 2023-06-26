@@ -24,6 +24,8 @@ RUN_ONLY="${3:-""}"
 BASE="$(dirname "$(abspath "$0")")"
 cd "${BASE}"
 
+# build the benchmark tools
+(mkdir -p build && cd build && cmake -DCMAKE_BUILD_TYPE=Release ../src && make -j4)
 
 export DATADIR="${BASE}/data"
 export SCRIPTS="${BASE}/regression"
@@ -58,7 +60,7 @@ run_test() {
 
 # continue on if one test fail
 set +e
-export EVALUATE="${BASE}/bench.awk"
+export EVALUATE="${BASE}/build/evaluate_results"
 run_test run_search "run_search.sh"
 set -e
 printf "\n"
