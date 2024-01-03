@@ -62,6 +62,7 @@ run_test() {
 set +e
 export EVALUATE="${BASE}/build/evaluate_results"
 run_test run_search "run_search.sh"
+run_test run_profile "run_profile.sh"
 set -e
 printf "\n"
 ERR=0
