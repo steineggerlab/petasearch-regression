@@ -27,3 +27,7 @@
 
 *.depend
 *.swp
+
+# compiled
+build/
+build-*/
